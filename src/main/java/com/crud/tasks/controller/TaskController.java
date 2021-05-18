@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/task")
@@ -25,8 +26,11 @@ public class TaskController {
         return taskMapper.mapToTaskDtoList(tasks);
     }
     @GetMapping(value = "getTask")
-    public TaskDto getTask(Long taskId) {
-        return new TaskDto(1L, "test title", "test_content");
+    public TaskDto getTask(Long taskId){
+        Optional <Task> task = service.getTaskById(taskId);
+        Task task1 = task.orElseThrow(()->new IllegalArgumentException());
+
+        return taskMapper.mapToTaskDto(task1);
     }
 
     @DeleteMapping(value = "deleteTask")
