@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Badges {
+public class Trello {
 
-    private int votes;
-    private AttachmentsByType attachments;
-
+    private int board;
+    private int card;
 }
