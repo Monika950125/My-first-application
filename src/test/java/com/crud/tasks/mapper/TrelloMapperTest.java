@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapperTestSuite {
-
+public class TrelloMapperTest {
 
     @Test
     public void mapToBoardsTest() {
@@ -108,6 +107,7 @@ public class MapperTestSuite {
         //Then
         Assertions.assertFalse(listsDto.isEmpty());
     }
+
     @Test
     public void mapToListDtoWhenListIsEmptyTest() {
         //Given
@@ -122,32 +122,30 @@ public class MapperTestSuite {
     }
 
     @Test
-    public void mapToTaskTest() {
+    public void mapToCardDtoTest(){
         //Given
-        TaskMapper taskMapper = new TaskMapper();
-        TaskDto taskDto = new TaskDto(1L, "title", "content");
+        TrelloMapper trelloMapper = new TrelloMapper();
+        TrelloCard trelloCard = new TrelloCard("name", "description", "pos", "list id");
 
         //When
-        Task task = taskMapper.mapToTask(taskDto);
+        TrelloCardDto trelloCardDto = trelloMapper.mapToCardDto(trelloCard);
 
         //Then
-        Assertions.assertEquals(taskDto.getId(), task.getId());
-        Assertions.assertEquals(taskDto.getTitle(), task.getTitle());
-        Assertions.assertEquals(taskDto.getContent(), task.getContent());
+        Assertions.assertEquals(trelloCard.getName(), trelloCardDto.getName());
+        Assertions.assertEquals(trelloCard.getDescription(), trelloCardDto.getDescription());
     }
 
     @Test
-    public void mapToTaskDtoTest() {
+    public void mapToCardTest(){
         //Given
-        TaskMapper taskMapper = new TaskMapper();
-        Task task = new Task(1L, "title", "content");
+        TrelloMapper trelloMapper = new TrelloMapper();
+        TrelloCardDto trelloCardDto = new TrelloCardDto("name", "description", "pos", "list id");
 
         //When
-        TaskDto taskDto = taskMapper.mapToTaskDto(task);
+        TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
 
         //Then
-        Assertions.assertEquals(task.getId(), taskDto.getId());
-        Assertions.assertEquals(task.getTitle(), taskDto.getTitle());
-        Assertions.assertEquals(task.getContent(), taskDto.getContent());
+        Assertions.assertEquals(trelloCardDto.getName(), trelloCard.getName());
+        Assertions.assertEquals(trelloCardDto.getDescription(), trelloCard.getDescription());
     }
 }
