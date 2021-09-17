@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My welcome page</title>
+</head>
+<body>
+
+<h1>First impression of my page</h1>
+
+<!--/*@thymesVar id="variable" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<span th:text="${variable}"></span>
+
+<br>
+
+<!--/*thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="mlt" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="equal_sign" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<span th:text="${two} + ${mlt} + ${two} + ${equal_sign} + ${two} * ${two}"></span>
+
+<br>
+
+<!--/*thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="mlt" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="equal_sign" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="plus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<span th:text="${two} + ${mlt} + ${two} + ${plus} + ${two} + ${equal_sign} + (${two} * ${two} + ${two}) "></span>
+
+<br>
+
+<!--/*thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="mlt" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="equal_sign" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="plus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<!--/*thymesVar id="minus" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+<span th:text="${two} + ${minus} + ${two} + ${mlt} + ${two} + ${equal_sign} + (${two} - ${two} * ${two}) "></span>
+
+</body>
+</html>
