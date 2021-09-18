@@ -18,8 +18,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @SpringJUnitWebConfig
@@ -65,8 +63,7 @@ class TaskControllerTest {
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/tasks/{taskId}")
-                        .param("taskId", "1")
+                        .get("/v1/tasks/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.is("title")));
@@ -122,17 +119,16 @@ class TaskControllerTest {
     @Test
     public void deleteTaskTest() throws Exception {
         //Given
-        TaskController taskController = new TaskController(service, taskMapper);
         Task task = new Task(1L, "title", "content");
 
 
         //When & Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .delete("/v1/tasks/{taskId}")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("taskId", "1"));
+                        .delete("/v1/tasks/1")
+                        .contentType(MediaType.APPLICATION_JSON));
 
-        verify(service, times(1)).deleteTask(task.getId());;
+        verify(service, times(1)).deleteTask(task.getId());
+        ;
     }
 }
