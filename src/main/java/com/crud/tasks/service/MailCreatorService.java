@@ -21,6 +21,8 @@ public class MailCreatorService {
     private TemplateEngine templateEngine;
 
     public String buildTrelloCardEmail(String message) {
+
+        String result = "";
         List<String> functionality = new ArrayList<>();
         functionality.add("You can manage your tasks");
         functionality.add("Provides connection with Trello Account");
@@ -38,6 +40,12 @@ public class MailCreatorService {
         context.setVariable("is_friend", true);
         context.setVariable("admin_config", adminConfig);
         context.setVariable("application_functionality", functionality);
-        return templateEngine.process("mail/created-trello-card-mail.html", context);
+
+        if (message.contains("New card")) {
+            result = templateEngine.process("mail/created-trello-card-mail.html", context);
+        } else if (message.contains("Currently")) {
+            result = templateEngine.process("mail/information_mail.html", context);
+        }
+        return result;
     }
 }

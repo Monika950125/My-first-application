@@ -3,6 +3,8 @@ package com.crud.tasks.service;
 import com.crud.tasks.config.AdminConfig;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloListDto;
+import com.crud.tasks.repository.TaskRepository;
+import com.crud.tasks.scheduler.EmailScheduler;
 import com.crud.tasks.trello.client.TrelloClient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,10 @@ public class TrelloServiceTestSuite {
     @Mock
     private AdminConfig adminConfig;
 
+    @Mock
+    private  SimpleEmailService simpleEmailService;
+
+
 //    @Test
 //    public void fetchTrelloBoardsTest() {
 //        //Given
@@ -43,4 +49,5 @@ public class TrelloServiceTestSuite {
 //        //Then
 //        Assertions.assertEquals(1, resultList.size());
 //    }
+
 }
